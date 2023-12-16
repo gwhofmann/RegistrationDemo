@@ -25,7 +25,7 @@ class RegistrationHandler: ObservableObject {
     }
     
     func isValidName(name: String) -> Bool {
-        return false
+        return !name.isEmpty
     }
     
     func isValidEmail(email: String) -> Bool {
@@ -33,7 +33,11 @@ class RegistrationHandler: ObservableObject {
     }
     
     func isValidDateOfBirth(dateOfBirth: Date) -> Bool {
-        return false
+        let minimumDateComponents = DateComponents(year: 1900, month: 1, day: 1)
+        let maximumDateComponents = DateComponents(year: 2023, month: 1, day: 1)
+        let minimumDate = Calendar.current.date(from: minimumDateComponents) ?? Date.now
+        let maximumDate = Calendar.current.date(from: maximumDateComponents) ?? Date.now
+        return (minimumDate..<maximumDate).contains(dateOfBirth)
     }
     
     
