@@ -8,13 +8,32 @@
 import SwiftUI
 
 struct RegistrationSuccessView: View {
+    @ObservedObject var registrationHandler: RegistrationHandler
+    
+    var dateOfBirthText: String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter.string(from: registrationHandler.registrationData.dateOfBirth)
+    }
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack{
+            Text("Danke für die Registrierung").font(.title)
+            Spacer()
+            Text(registrationHandler.registrationData.name).bold().padding()
+            Text(registrationHandler.registrationData.email).bold().padding()
+            Text(dateOfBirthText).bold().padding()
+            Spacer()
+        }.padding()
     }
 }
 
 struct RegistrationSuccessView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationSuccessView()
+        let handler = RegistrationHandler()
+        RegistrationSuccessView(registrationHandler: handler).onAppear{
+            handler.registrationData = RegistrationData(name: "Claudia Testmensch", email: "claudia.testmensch@testmail.com", dateOfBirth: Date(timeIntervalSince1970: 521646037))
+        }
     }
 }
