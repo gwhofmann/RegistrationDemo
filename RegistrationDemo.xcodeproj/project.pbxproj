@@ -14,6 +14,10 @@
 		F5F712732B2FB20500F3A028 /* RegistrationDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F712722B2FB20500F3A028 /* RegistrationDemoTests.swift */; };
 		F5F7127D2B2FB20500F3A028 /* RegistrationDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F7127C2B2FB20500F3A028 /* RegistrationDemoUITests.swift */; };
 		F5F7127F2B2FB20500F3A028 /* RegistrationDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F7127E2B2FB20500F3A028 /* RegistrationDemoUITestsLaunchTests.swift */; };
+		F5F7128E2B2FB20500F3A028 /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F7128D2B2FB20500F3A028 /* RegistrationData.swift */; };
+		F5F712902B2FB20500F3A028 /* RegistrationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F7128F2B2FB20500F3A028 /* RegistrationHandler.swift */; };
+		F5F712922B2FB20500F3A028 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F712912B2FB20500F3A028 /* RegistrationView.swift */; };
+		F5F712942B2FB20500F3A028 /* RegistrationSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F712932B2FB20500F3A028 /* RegistrationSuccessView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		F5F712782B2FB20500F3A028 /* RegistrationDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegistrationDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F7127C2B2FB20500F3A028 /* RegistrationDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDemoUITests.swift; sourceTree = "<group>"; };
 		F5F7127E2B2FB20500F3A028 /* RegistrationDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F5F7128D2B2FB20500F3A028 /* RegistrationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationData.swift; sourceTree = "<group>"; };
+		F5F7128F2B2FB20500F3A028 /* RegistrationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationHandler.swift; sourceTree = "<group>"; };
+		F5F712912B2FB20500F3A028 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
+		F5F712932B2FB20500F3A028 /* RegistrationSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationSuccessView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +102,14 @@
 		F5F712602B2FB20500F3A028 /* RegistrationDemo */ = {
 			isa = PBXGroup;
 			children = (
+				F5F7128C2B2FB20500F3A028 /* ViewModel */,
+				F5F7128B2B2FB20500F3A028 /* DataModel */,
 				F5F712612B2FB20500F3A028 /* RegistrationDemoApp.swift */,
 				F5F712632B2FB20500F3A028 /* ContentView.swift */,
 				F5F712652B2FB20500F3A028 /* Assets.xcassets */,
 				F5F712672B2FB20500F3A028 /* Preview Content */,
+				F5F712912B2FB20500F3A028 /* RegistrationView.swift */,
+				F5F712932B2FB20500F3A028 /* RegistrationSuccessView.swift */,
 			);
 			path = RegistrationDemo;
 			sourceTree = "<group>";
@@ -125,6 +137,22 @@
 				F5F7127E2B2FB20500F3A028 /* RegistrationDemoUITestsLaunchTests.swift */,
 			);
 			path = RegistrationDemoUITests;
+			sourceTree = "<group>";
+		};
+		F5F7128B2B2FB20500F3A028 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				F5F7128D2B2FB20500F3A028 /* RegistrationData.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
+		F5F7128C2B2FB20500F3A028 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F5F7128F2B2FB20500F3A028 /* RegistrationHandler.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,7 +286,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5F712642B2FB20500F3A028 /* ContentView.swift in Sources */,
+				F5F712942B2FB20500F3A028 /* RegistrationSuccessView.swift in Sources */,
+				F5F712902B2FB20500F3A028 /* RegistrationHandler.swift in Sources */,
 				F5F712622B2FB20500F3A028 /* RegistrationDemoApp.swift in Sources */,
+				F5F7128E2B2FB20500F3A028 /* RegistrationData.swift in Sources */,
+				F5F712922B2FB20500F3A028 /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
