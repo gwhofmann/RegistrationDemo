@@ -18,6 +18,7 @@
 		F5F712902B2FB20500F3A028 /* RegistrationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F7128F2B2FB20500F3A028 /* RegistrationHandler.swift */; };
 		F5F712922B2FB20500F3A028 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F712912B2FB20500F3A028 /* RegistrationView.swift */; };
 		F5F712942B2FB20500F3A028 /* RegistrationSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F712932B2FB20500F3A028 /* RegistrationSuccessView.swift */; };
+		F5F712962B2FB20500F3A028 /* RegistrationHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F712952B2FB20500F3A028 /* RegistrationHandlerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		F5F7128F2B2FB20500F3A028 /* RegistrationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationHandler.swift; sourceTree = "<group>"; };
 		F5F712912B2FB20500F3A028 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		F5F712932B2FB20500F3A028 /* RegistrationSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationSuccessView.swift; sourceTree = "<group>"; };
+		F5F712952B2FB20500F3A028 /* RegistrationHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationHandlerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				F5F712722B2FB20500F3A028 /* RegistrationDemoTests.swift */,
+				F5F712952B2FB20500F3A028 /* RegistrationHandlerTests.swift */,
 			);
 			path = RegistrationDemoTests;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5F712732B2FB20500F3A028 /* RegistrationDemoTests.swift in Sources */,
+				F5F712962B2FB20500F3A028 /* RegistrationHandlerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
