@@ -29,7 +29,31 @@ class RegistrationHandler: ObservableObject {
     }
     
     func isValidEmail(email: String) -> Bool {
-        return false
+        let components = email.split(separator: "@")
+        if components.count != 2 {
+            // The email address doesn't have exactly one @ dividing it into a username and domain component
+            return false
+        }
+        let domainComponent = components[1]
+        let domainSubComponents = domainComponent.split(separator: ".")
+        if domainSubComponents.count < 2 {
+            // the domain of the email address doesn't have at least one dot or the dot is at the start or end
+            return false
+        }
+        if domainSubComponents.contains(where: { subComponent in
+            subComponent.isEmpty
+        }) {
+            // any segment of the domain has fewer than one character
+            return false
+        }
+        
+        if domainSubComponents.last?.count ?? 0 < 2 {
+            // the top-level domain has fewer than two characters
+            return false
+        }
+        
+        // everything checks out
+        return true
     }
     
     func isValidDateOfBirth(dateOfBirth: Date) -> Bool {
