@@ -13,7 +13,7 @@ class RegistrationHandler: ObservableObject {
     @Published var registrationData: RegistrationData = RegistrationData(name: "", email: "", dateOfBirth: Date())
     
     var validRegistrationDataPresent: Bool {
-        isValidName(name: registrationData.name) && isValidEmail(email: registrationData.email) && isValidDateOfBirth(dateOfBirth: registrationData.dateOfBirth)
+        isValidRegistrationData(data: registrationData)
     }
     
     func persistRegistrationData() {
@@ -62,6 +62,11 @@ class RegistrationHandler: ObservableObject {
         let minimumDate = Calendar.current.date(from: minimumDateComponents) ?? Date.now
         let maximumDate = Calendar.current.date(from: maximumDateComponents) ?? Date.now
         return (minimumDate..<maximumDate).contains(dateOfBirth)
+    }
+    
+    func isValidRegistrationData(data: RegistrationData) -> Bool {
+        return isValidName(name: data.name) &&
+        isValidEmail(email: data.email) && isValidDateOfBirth(dateOfBirth: data.dateOfBirth)
     }
     
     

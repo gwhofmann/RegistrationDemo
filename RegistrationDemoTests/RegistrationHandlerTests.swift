@@ -87,6 +87,51 @@ final class RegistrationHandlerTests: XCTestCase {
         let result = registrationHandler.isValidDateOfBirth(dateOfBirth: date)
         XCTAssertTrue(result)
     }
+    
+    func testIsValidRegistrationData_ValidData_ReturnsTrue() throws {
+        let registrationHandler = getRegistrationHandler()
+        let dateComponents = DateComponents(year: 1990, month: 5, day: 17)
+        let date = Calendar.current.date(from: dateComponents)!
+        let email = "a@b.ch"
+        let name = "Name"
+        let data = RegistrationData(name: name, email: email, dateOfBirth: date)
+        let result = registrationHandler.isValidRegistrationData(data: data)
+        XCTAssertTrue(result)
+    }
+    
+    func testIsValidRegistrationData_InvalidName_ReturnsFalse() throws {
+        let registrationHandler = getRegistrationHandler()
+        let dateComponents = DateComponents(year: 1990, month: 5, day: 17)
+        let date = Calendar.current.date(from: dateComponents)!
+        let email = "a@b.ch"
+        let name = ""
+        let data = RegistrationData(name: name, email: email, dateOfBirth: date)
+        let result = registrationHandler.isValidRegistrationData(data: data)
+        XCTAssertFalse(result)
+    }
+    
+    func testIsValidRegistrationData_InvalidEmail_ReturnsFalse() throws {
+        let registrationHandler = getRegistrationHandler()
+        let dateComponents = DateComponents(year: 1990, month: 5, day: 17)
+        let date = Calendar.current.date(from: dateComponents)!
+        let email = "a@ch"
+        let name = "Name"
+        let data = RegistrationData(name: name, email: email, dateOfBirth: date)
+        let result = registrationHandler.isValidRegistrationData(data: data)
+        XCTAssertFalse(result)
+    }
+    
+    func testIsValidRegistrationData_InvalidDoB_ReturnsFalse() throws {
+        let registrationHandler = getRegistrationHandler()
+        let dateComponents = DateComponents(year: 2023, month: 5, day: 17)
+        let date = Calendar.current.date(from: dateComponents)!
+        let email = "a@b.ch"
+        let name = "Name"
+        let data = RegistrationData(name: name, email: email, dateOfBirth: date)
+        let result = registrationHandler.isValidRegistrationData(data: data)
+        XCTAssertFalse(result)
+    }
+    
 
     func testExample() throws {
         // This is an example of a functional test case.

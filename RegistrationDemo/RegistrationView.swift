@@ -35,12 +35,11 @@ struct RegistrationView: View {
             nameEntryAttempted = true
             emailEntryAttempted = true
             dobEntryAttempted = true
-            guard registrationHandler.isValidName(name: nameEntry) &&
-                    registrationHandler.isValidEmail(email: emailEntry) &&
-                    registrationHandler.isValidDateOfBirth(dateOfBirth: dobEntry) else {
+            let registrationData = RegistrationData(name: nameEntry, email: emailEntry, dateOfBirth: dobEntry)
+            guard registrationHandler.isValidRegistrationData(data: registrationData) else {
                 return
             }
-            registrationHandler.registrationData = RegistrationData(name: nameEntry, email: emailEntry, dateOfBirth: dobEntry)
+            registrationHandler.registrationData = registrationData
             registrationHandler.persistRegistrationData()
         }
     }
