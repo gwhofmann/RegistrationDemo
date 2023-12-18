@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RegistrationView: View {
-    @ObservedObject var registrationHandler: RegistrationHandler
+    @EnvironmentObject var registrationHandler: RegistrationHandler
     
     @State private var nameEntry = ""
     @State private var emailEntry = ""
@@ -100,6 +100,6 @@ struct RegistrationView: View {
 
 struct RegistrationView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistrationView(registrationHandler: RegistrationHandler())
+        RegistrationView().environmentObject(RegistrationHandler())
     }
 }

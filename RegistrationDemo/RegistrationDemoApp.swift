@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct RegistrationDemoApp: App {
+    @StateObject private var registrationHandler = RegistrationHandler()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(registrationHandler)
         }
     }
 }

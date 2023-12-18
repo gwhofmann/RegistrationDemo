@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RegistrationSuccessView: View {
-    @ObservedObject var registrationHandler: RegistrationHandler
+    @EnvironmentObject var registrationHandler: RegistrationHandler
     
     var dateOfBirthText: String {
         let formatter = DateFormatter()
@@ -32,7 +32,7 @@ struct RegistrationSuccessView: View {
 struct RegistrationSuccessView_Previews: PreviewProvider {
     static var previews: some View {
         let handler = RegistrationHandler()
-        RegistrationSuccessView(registrationHandler: handler).onAppear{
+        RegistrationSuccessView().environmentObject(handler).onAppear{
             handler.registrationData = RegistrationData(name: "Claudia Testmensch", email: "claudia.testmensch@testmail.com", dateOfBirth: Date(timeIntervalSince1970: 521646037))
         }
     }
