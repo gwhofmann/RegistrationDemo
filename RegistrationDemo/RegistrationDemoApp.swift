@@ -13,7 +13,9 @@ struct RegistrationDemoApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView().environmentObject(registrationHandler)
+            ContentView().environmentObject(registrationHandler).onAppear{
+                registrationHandler.registrationData = registrationHandler.getPersistedRegistrationData()
+            }
         }
     }
 }

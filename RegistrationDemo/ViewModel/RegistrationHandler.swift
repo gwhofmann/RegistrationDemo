@@ -10,18 +10,30 @@ import SwiftUI
 
 class RegistrationHandler: ObservableObject {
     
-    @Published var registrationData: RegistrationData = RegistrationData(name: "", email: "", dateOfBirth: Date())
+    @Published var registrationData: RegistrationData = RegistrationData(name: "", email: "", dateOfBirth: Date.now)
+    
+    var userDefaults = UserDefaults.standard
     
     var validRegistrationDataPresent: Bool {
         isValidRegistrationData(data: registrationData)
     }
     
-    func persistRegistrationData() {
-        
+    func persistRegistrationData(registrationData: RegistrationData) {
+        userDefaults.set(registrationData.name, forKey: "registrationName")
+        userDefaults.set(registrationData.email, forKey: "registrationEmail")
+        userDefaults.set(registrationData.dateOfBirth.timeIntervalSince1970, forKey: "registrationDoB")
     }
     
     func getPersistedRegistrationData() -> RegistrationData {
-        return RegistrationData(name: "", email: "", dateOfBirth: Date())
+        let name = userDefaults.string(forKey: "registrationName") ?? ""
+        let email = userDefaults.string(forKey: "registrationEmail") ?? ""
+        if userDefaults.object(forKey: "registrationDoB") != nil {
+            let dateOfBirthTimestamp = userDefaults.double(forKey: "registrationDoB")
+            let dateOfBirth = Date(timeIntervalSince1970: dateOfBirthTimestamp)
+            return RegistrationData(name: name, email: email, dateOfBirth: dateOfBirth)
+        } else {
+            return RegistrationData(name: name, email: email, dateOfBirth: .now)
+        }
     }
     
     func isValidName(name: String) -> Bool {

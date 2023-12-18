@@ -40,7 +40,7 @@ struct RegistrationView: View {
                 return
             }
             registrationHandler.registrationData = registrationData
-            registrationHandler.persistRegistrationData()
+            registrationHandler.persistRegistrationData(registrationData: registrationData)
         }
     }
     
