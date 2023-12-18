@@ -12,9 +12,9 @@ struct ContentView: View {
     
     var body: some View {
         if registrationHandler.validRegistrationDataPresent {
-            RegistrationSuccessView()
+            RegistrationSuccessView().transition(.opacity)
         } else {
-            RegistrationView()
+            RegistrationView().transition(.opacity)
         }
     }
 }

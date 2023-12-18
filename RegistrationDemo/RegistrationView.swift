@@ -31,16 +31,18 @@ struct RegistrationView: View {
     }
     
     func commitInput() {
-        nameEntryAttempted = true
-        emailEntryAttempted = true
-        dobEntryAttempted = true
-        guard registrationHandler.isValidName(name: nameEntry) &&
-                registrationHandler.isValidEmail(email: emailEntry) &&
-                registrationHandler.isValidDateOfBirth(dateOfBirth: dobEntry) else {
-            return
+        withAnimation{
+            nameEntryAttempted = true
+            emailEntryAttempted = true
+            dobEntryAttempted = true
+            guard registrationHandler.isValidName(name: nameEntry) &&
+                    registrationHandler.isValidEmail(email: emailEntry) &&
+                    registrationHandler.isValidDateOfBirth(dateOfBirth: dobEntry) else {
+                return
+            }
+            registrationHandler.registrationData = RegistrationData(name: nameEntry, email: emailEntry, dateOfBirth: dobEntry)
+            registrationHandler.persistRegistrationData()
         }
-        registrationHandler.registrationData = RegistrationData(name: nameEntry, email: emailEntry, dateOfBirth: dobEntry)
-        registrationHandler.persistRegistrationData()
     }
     
     var body: some View {
