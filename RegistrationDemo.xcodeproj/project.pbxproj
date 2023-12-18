@@ -19,6 +19,7 @@
 		F5F712922B2FB20500F3A028 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F712912B2FB20500F3A028 /* RegistrationView.swift */; };
 		F5F712942B2FB20500F3A028 /* RegistrationSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F712932B2FB20500F3A028 /* RegistrationSuccessView.swift */; };
 		F5F712962B2FB20500F3A028 /* RegistrationHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F712952B2FB20500F3A028 /* RegistrationHandlerTests.swift */; };
+		F5F712982B30D37700F3A028 /* RegistrationHandlerIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F712972B30D37700F3A028 /* RegistrationHandlerIntegrationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		F5F712912B2FB20500F3A028 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		F5F712932B2FB20500F3A028 /* RegistrationSuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationSuccessView.swift; sourceTree = "<group>"; };
 		F5F712952B2FB20500F3A028 /* RegistrationHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationHandlerTests.swift; sourceTree = "<group>"; };
+		F5F712972B30D37700F3A028 /* RegistrationHandlerIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationHandlerIntegrationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 			children = (
 				F5F712722B2FB20500F3A028 /* RegistrationDemoTests.swift */,
 				F5F712952B2FB20500F3A028 /* RegistrationHandlerTests.swift */,
+				F5F712972B30D37700F3A028 /* RegistrationHandlerIntegrationTests.swift */,
 			);
 			path = RegistrationDemoTests;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 			files = (
 				F5F712732B2FB20500F3A028 /* RegistrationDemoTests.swift in Sources */,
 				F5F712962B2FB20500F3A028 /* RegistrationHandlerTests.swift in Sources */,
+				F5F712982B30D37700F3A028 /* RegistrationHandlerIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
