@@ -13,7 +13,7 @@ class RegistrationHandler: ObservableObject {
     @Published var registrationData: RegistrationData = RegistrationData(name: "", email: "", dateOfBirth: Date())
     
     var validRegistrationDataPresent: Bool {
-        false
+        isValidName(name: registrationData.name) && isValidEmail(email: registrationData.email) && isValidDateOfBirth(dateOfBirth: registrationData.dateOfBirth)
     }
     
     func persistRegistrationData() {
