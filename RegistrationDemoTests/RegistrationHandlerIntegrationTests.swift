@@ -35,14 +35,16 @@ final class RegistrationHandlerIntegrationTests: XCTestCase {
         
         let dateComponents = DateComponents(year: 2023, month: 5, day: 17)
         let date = Calendar.current.date(from: dateComponents)!
-        let inputRegistrationData = RegistrationData(name: "Name", email: "a@b.ch", dateOfBirth: date)
+        let inputRegistrationData = RegistrationData(name: "Name", email: "a@b.ch", dateOfBirthDay: 15, dateOfBirthMonth: 7, dateOfBirhYear: 1985)
         registrationHandler.persistRegistrationData(registrationData: inputRegistrationData)
         
         let outputRegistrationData = registrationHandler.getPersistedRegistrationData()
         
         let result = inputRegistrationData.name == outputRegistrationData.name
-            && inputRegistrationData.email == outputRegistrationData.email
-            && inputRegistrationData.dateOfBirth == outputRegistrationData.dateOfBirth
+        && inputRegistrationData.email == outputRegistrationData.email
+        && inputRegistrationData.dateOfBirthDay == outputRegistrationData.dateOfBirthDay
+        && inputRegistrationData.dateOfBirthMonth == outputRegistrationData.dateOfBirthMonth
+        && inputRegistrationData.dateOfBirhYear == outputRegistrationData.dateOfBirhYear
         
         XCTAssertTrue(result)
     }
@@ -52,7 +54,11 @@ final class RegistrationHandlerIntegrationTests: XCTestCase {
         
         let outputRegistrationData = registrationHandler.getPersistedRegistrationData()
         
-        let result = outputRegistrationData.name == "" && outputRegistrationData.email == "" && outputRegistrationData.dateOfBirth == .now
+        let result = outputRegistrationData.name == ""
+        && outputRegistrationData.email == ""
+        && outputRegistrationData.dateOfBirthDay == 0
+        && outputRegistrationData.dateOfBirthMonth == 0
+        && outputRegistrationData.dateOfBirhYear == 0
         XCTAssertTrue(result)
     }
     

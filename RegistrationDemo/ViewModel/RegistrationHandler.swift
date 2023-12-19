@@ -10,7 +10,7 @@ import SwiftUI
 
 class RegistrationHandler: ObservableObject {
     
-    @Published var registrationData: RegistrationData = RegistrationData(name: "", email: "", dateOfBirth: Date.now)
+    @Published var registrationData: RegistrationData = RegistrationData(name: "", email: "", dateOfBirthDay: 0, dateOfBirthMonth: 0, dateOfBirhYear: 0)
     
     var userDefaults = UserDefaults.standard
     
@@ -22,13 +22,9 @@ class RegistrationHandler: ObservableObject {
         userDefaults.set(registrationData.name, forKey: "registrationName")
         userDefaults.set(registrationData.email, forKey: "registrationEmail")
         
-        let dobComponents = Calendar.current.dateComponents([.year, .month, .day], from: registrationData.dateOfBirth)
-        let dobDay = dobComponents.day
-        let dobMonth = dobComponents.month
-        let dobYear = dobComponents.year
-        userDefaults.set(dobYear, forKey: "registrationDoBYear")
-        userDefaults.set(dobMonth, forKey: "registrationDoBMonth")
-        userDefaults.set(dobDay, forKey: "registrationDoBDay")
+        userDefaults.set(registrationData.dateOfBirhYear, forKey: "registrationDoBYear")
+        userDefaults.set(registrationData.dateOfBirthMonth, forKey: "registrationDoBMonth")
+        userDefaults.set(registrationData.dateOfBirthDay, forKey: "registrationDoBDay")
 
     }
     
@@ -38,14 +34,10 @@ class RegistrationHandler: ObservableObject {
         let dobDay = userDefaults.integer(forKey: "registrationDoBDay")
         let dobMonth = userDefaults.integer(forKey: "registrationDoBMonth")
         let dobYear = userDefaults.integer(forKey: "registrationDoBYear")
-        guard dobDay != 0 && dobMonth != 0 && dobYear != 0 else {
-            // Non-set keys are returned as 0. As 0 is never a valid value for a day, month or year, return the default date (now)
-            return RegistrationData(name: name, email: email, dateOfBirth: .now)
-        }
         let dateOfBirthComponents = DateComponents(year: dobYear, month: dobMonth, day: dobDay)
         let dateOfBirth = Calendar.current.date(from: dateOfBirthComponents)
         
-        return RegistrationData(name: name, email: email, dateOfBirth: dateOfBirth ?? .now)
+        return RegistrationData(name: name, email: email, dateOfBirthDay: dobDay, dateOfBirthMonth: dobMonth, dateOfBirhYear: dobYear)
     }
     
     func isValidName(name: String) -> Bool {
@@ -89,8 +81,14 @@ class RegistrationHandler: ObservableObject {
     }
     
     func isValidRegistrationData(data: RegistrationData) -> Bool {
+        guard let dateOfBirth = Calendar.current.date(from: DateComponents(year: data.dateOfBirhYear, month: data.dateOfBirthMonth, day: data.dateOfBirthDay)) else {
+            // If the day, month, and year for the date of birth can't be converted into a date it is invalid
+            // In particular, this applies to the default values of 0 for all fields.
+            return false
+        }
+        
         return isValidName(name: data.name) &&
-        isValidEmail(email: data.email) && isValidDateOfBirth(dateOfBirth: data.dateOfBirth)
+        isValidEmail(email: data.email) && isValidDateOfBirth(dateOfBirth: dateOfBirth)
     }
     
     

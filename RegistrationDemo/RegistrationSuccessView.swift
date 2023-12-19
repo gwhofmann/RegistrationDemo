@@ -14,7 +14,15 @@ struct RegistrationSuccessView: View {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
-        return formatter.string(from: registrationHandler.registrationData.dateOfBirth)
+        let dobComponents = DateComponents(
+            year: registrationHandler.registrationData.dateOfBirhYear,
+            month: registrationHandler.registrationData.dateOfBirthMonth,
+            day: registrationHandler.registrationData.dateOfBirthDay
+        )
+        guard let dateOfBirth = Calendar.current.date(from: dobComponents) else {
+            return "Unbekanntes Geburtsdatum"
+        }
+        return formatter.string(from: dateOfBirth)
     }
     
     var body: some View {
@@ -37,7 +45,7 @@ struct RegistrationSuccessView_Previews: PreviewProvider {
     static var previews: some View {
         let handler = RegistrationHandler()
         RegistrationSuccessView().environmentObject(handler).onAppear{
-            handler.registrationData = RegistrationData(name: "Claudia Testmensch", email: "claudia.testmensch@testmail.com", dateOfBirth: Date(timeIntervalSince1970: 521646037))
+            handler.registrationData = RegistrationData(name: "Claudia Testmensch", email: "claudia.testmensch@testmail.com", dateOfBirthDay: 15, dateOfBirthMonth: 7, dateOfBirhYear: 1985)
         }
     }
 }

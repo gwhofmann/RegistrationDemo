@@ -35,7 +35,8 @@ struct RegistrationView: View {
             nameEntryAttempted = true
             emailEntryAttempted = true
             dobEntryAttempted = true
-            let registrationData = RegistrationData(name: nameEntry, email: emailEntry, dateOfBirth: dobEntry)
+            let dobComponents = Calendar.current.dateComponents([.year, .month, .day], from: dobEntry)
+            let registrationData = RegistrationData(name: nameEntry, email: emailEntry, dateOfBirthDay: dobComponents.day ?? 0, dateOfBirthMonth: dobComponents.month ?? 0, dateOfBirhYear: dobComponents.year ?? 0)
             guard registrationHandler.isValidRegistrationData(data: registrationData) else {
                 return
             }

@@ -10,5 +10,7 @@ import Foundation
 struct RegistrationData {
     let name: String
     let email: String
-    let dateOfBirth: Date
+    let dateOfBirthDay: Int
+    let dateOfBirthMonth: Int
+    let dateOfBirhYear: Int
 }
