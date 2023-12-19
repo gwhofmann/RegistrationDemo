@@ -45,57 +45,58 @@ struct RegistrationView: View {
     }
     
     var body: some View {
-        VStack{
-            Text("Registrierung").font(.title)
-            Spacer()
-            Text("Um dich zu registrieren, gib' bitte deinen Namen, deine Email-Adresse und dein Geburtsdatum ein.")
+        ScrollView {
             VStack{
-                TextField("Name", text: $nameEntry)
-                    .onSubmit {
-                        nameEntryAttempted = true
+                Text("Registrierung").font(.title)
+                Text("Um dich zu registrieren, gib' bitte deinen Namen, deine Email-Adresse und dein Geburtsdatum ein.").padding(.vertical)
+                VStack{
+                    TextField("Name", text: $nameEntry)
+                        .onSubmit {
+                            nameEntryAttempted = true
+                        }
+                        .textFieldStyle(.roundedBorder)
+                        .textContentType(.name)
+                        .keyboardType(.default)
+                        .autocorrectionDisabled()
+                        .padding(.horizontal)
+                    if nameEntryAttempted && !nameEntryIsValid {
+                        Text("Bitte gib' einen Namen ein.").foregroundColor(.red)
                     }
-                    .textFieldStyle(.roundedBorder)
-                    .textContentType(.name)
-                    .keyboardType(.default)
-                    .autocorrectionDisabled()
-                    .padding(.horizontal)
-                if nameEntryAttempted && !nameEntryIsValid {
-                    Text("Bitte gib' einen Namen ein.").foregroundColor(.red)
-                }
-            }.padding()
-            VStack{
-                TextField("Email-Adresse", text: $emailEntry)
-                    .onSubmit {
-                        emailEntryAttempted = true
-                    }
-                    .textFieldStyle(.roundedBorder)
-                    .textContentType(.emailAddress)
-                    .keyboardType(.emailAddress)
-                    .autocorrectionDisabled()
-                    .textInputAutocapitalization(.never)
-                    .padding(.horizontal)
+                }.padding()
+                VStack{
+                    TextField("Email-Adresse", text: $emailEntry)
+                        .onSubmit {
+                            emailEntryAttempted = true
+                        }
+                        .textFieldStyle(.roundedBorder)
+                        .textContentType(.emailAddress)
+                        .keyboardType(.emailAddress)
+                        .autocorrectionDisabled()
+                        .textInputAutocapitalization(.never)
+                        .padding(.horizontal)
 
-                if emailEntryAttempted && !emailEntryIsValid {
-                    Text("Bitte gib' eine gültige Email-Adresse ein.").foregroundColor(.red)
-                }
-            }.padding()
-            VStack{
-                DatePicker("Geburtsdatum:", selection: $dobEntry, displayedComponents: .date)
-                    .onSubmit {
-                        dobEntryAttempted = true
+                    if emailEntryAttempted && !emailEntryIsValid {
+                        Text("Bitte gib' eine gültige Email-Adresse ein.").foregroundColor(.red)
                     }
-                    .padding(.horizontal)
+                }.padding()
+                VStack{
+                    DatePicker("Geburtsdatum:", selection: $dobEntry, displayedComponents: .date)
+                        .onSubmit {
+                            dobEntryAttempted = true
+                        }
+                        .padding(.horizontal)
+                    
+                    if dobEntryAttempted && !dobEntryIsValid {
+                        Text("Bitte setze ein gültiges Geburtsdatum zwischen dem 1.1.1900 und dem 31.12.2022.").foregroundColor(.red)
+                    }
+                }.padding()
+                Spacer()
+                Button(action: commitInput){
+                    Text("Registrieren").font(.title2)
+                }.padding()
                 
-                if dobEntryAttempted && !dobEntryIsValid {
-                    Text("Bitte setze ein gültiges Geburtsdatum zwischen dem 1.1.1900 und dem 31.12.2022.").foregroundColor(.red)
-                }
-            }.padding()
-            Spacer()
-            Button(action: commitInput){
-                Text("Registrieren").font(.title2)
-            }.padding()
-            
-        }.padding(.horizontal)
+            }.padding(.horizontal)
+        }
     }
 }
 

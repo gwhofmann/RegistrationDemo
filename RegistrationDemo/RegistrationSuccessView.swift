@@ -18,14 +18,17 @@ struct RegistrationSuccessView: View {
     }
     
     var body: some View {
-        VStack{
-            Text("Danke für die Registrierung").font(.title)
-            Spacer()
-            Text(registrationHandler.registrationData.name).bold().padding()
-            Text(registrationHandler.registrationData.email).bold().padding()
-            Text(dateOfBirthText).bold().padding()
-            Spacer()
-        }.padding()
+        ScrollView {
+            VStack{
+                Text("Danke für die Registrierung").font(.title)
+                VStack{
+                    Text(registrationHandler.registrationData.name).bold().padding()
+                    Text(registrationHandler.registrationData.email).bold().padding()
+                    Text(dateOfBirthText).bold().padding()
+                }.padding(.vertical)
+                
+            }.padding()
+        }
     }
 }
 
