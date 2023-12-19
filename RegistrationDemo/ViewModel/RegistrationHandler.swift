@@ -21,19 +21,31 @@ class RegistrationHandler: ObservableObject {
     func persistRegistrationData(registrationData: RegistrationData) {
         userDefaults.set(registrationData.name, forKey: "registrationName")
         userDefaults.set(registrationData.email, forKey: "registrationEmail")
-        userDefaults.set(registrationData.dateOfBirth.timeIntervalSince1970, forKey: "registrationDoB")
+        
+        let dobComponents = Calendar.current.dateComponents([.year, .month, .day], from: registrationData.dateOfBirth)
+        let dobDay = dobComponents.day
+        let dobMonth = dobComponents.month
+        let dobYear = dobComponents.year
+        userDefaults.set(dobYear, forKey: "registrationDoBYear")
+        userDefaults.set(dobMonth, forKey: "registrationDoBMonth")
+        userDefaults.set(dobDay, forKey: "registrationDoBDay")
+
     }
     
     func getPersistedRegistrationData() -> RegistrationData {
         let name = userDefaults.string(forKey: "registrationName") ?? ""
         let email = userDefaults.string(forKey: "registrationEmail") ?? ""
-        if userDefaults.object(forKey: "registrationDoB") != nil {
-            let dateOfBirthTimestamp = userDefaults.double(forKey: "registrationDoB")
-            let dateOfBirth = Date(timeIntervalSince1970: dateOfBirthTimestamp)
-            return RegistrationData(name: name, email: email, dateOfBirth: dateOfBirth)
-        } else {
+        let dobDay = userDefaults.integer(forKey: "registrationDoBDay")
+        let dobMonth = userDefaults.integer(forKey: "registrationDoBMonth")
+        let dobYear = userDefaults.integer(forKey: "registrationDoBYear")
+        guard dobDay != 0 && dobMonth != 0 && dobYear != 0 else {
+            // Non-set keys are returned as 0. As 0 is never a valid value for a day, month or year, return the default date (now)
             return RegistrationData(name: name, email: email, dateOfBirth: .now)
         }
+        let dateOfBirthComponents = DateComponents(year: dobYear, month: dobMonth, day: dobDay)
+        let dateOfBirth = Calendar.current.date(from: dateOfBirthComponents)
+        
+        return RegistrationData(name: name, email: email, dateOfBirth: dateOfBirth ?? .now)
     }
     
     func isValidName(name: String) -> Bool {

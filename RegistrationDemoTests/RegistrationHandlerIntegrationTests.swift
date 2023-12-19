@@ -56,20 +56,5 @@ final class RegistrationHandlerIntegrationTests: XCTestCase {
         XCTAssertTrue(result)
     }
     
-    func testPersistence_PersistedRegistrationDataWithTimestampZero_RetrievedCorrectly() throws {
-        let registrationHandler = getRegistrationHandler()
-        
-        let date = Date(timeIntervalSince1970: 0)
-        let inputRegistrationData = RegistrationData(name: "Name", email: "a@b.ch", dateOfBirth: date)
-        registrationHandler.persistRegistrationData(registrationData: inputRegistrationData)
-        
-        let outputRegistrationData = registrationHandler.getPersistedRegistrationData()
-        
-        let result = inputRegistrationData.name == outputRegistrationData.name
-            && inputRegistrationData.email == outputRegistrationData.email
-            && inputRegistrationData.dateOfBirth == outputRegistrationData.dateOfBirth
-        
-        XCTAssertTrue(result)
-    }
 
 }
