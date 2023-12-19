@@ -90,8 +90,15 @@ struct RegistrationView: View {
                     }
                 }.padding()
                 VStack{
-                    DatePicker(selection: $dobEntry, displayedComponents: .date){
-                        Text("Geburtsdatum:")                            .foregroundColor(dobEntryAttempted && !dobEntryIsValid ? .red : .primary)
+                    ViewThatFits{
+                        DatePicker(selection: $dobEntry, displayedComponents: .date){
+                            Text("Geburtsdatum:")                            .foregroundColor(dobEntryAttempted && !dobEntryIsValid ? .red : .primary)
+                        }
+                        VStack{
+                            Text("Geburtsdatum:")                            .foregroundColor(dobEntryAttempted && !dobEntryIsValid ? .red : .primary)
+                            DatePicker(selection: $dobEntry, displayedComponents: .date){
+                            }.fixedSize()
+                        }
                     }
                     .padding(.horizontal)
                     
