@@ -72,6 +72,22 @@ final class RegistrationHandlerTests: XCTestCase {
         XCTAssertFalse(result)
     }
     
+    func testValidDateOfBirth_DateOfBirthLowerEdgeDay_ReturnsTrue() throws {
+        let registrationHandler = getRegistrationHandler()
+        let dateComponents = DateComponents(year: 1900, month: 1, day: 1)
+        let date = Calendar.current.date(from: dateComponents)!
+        let result = registrationHandler.isValidDateOfBirth(dateOfBirth: date)
+        XCTAssertTrue(result)
+    }
+    
+    func testValidDateOfBirth_DateOfBirthUpperEdgeDay_ReturnsTrue() throws {
+        let registrationHandler = getRegistrationHandler()
+        let dateComponents = DateComponents(year: 2022, month: 12, day: 31)
+        let date = Calendar.current.date(from: dateComponents)!
+        let result = registrationHandler.isValidDateOfBirth(dateOfBirth: date)
+        XCTAssertTrue(result)
+    }
+    
     func testIsValidDateOfBirth_DateOfBirthAfter31Dec2022_ReturnsFalse() throws {
         let registrationHandler = getRegistrationHandler()
         let dateComponents = DateComponents(year: 2023, month: 1, day: 1)
