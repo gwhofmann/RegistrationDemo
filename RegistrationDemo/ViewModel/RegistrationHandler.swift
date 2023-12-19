@@ -45,6 +45,14 @@ class RegistrationHandler: ObservableObject {
     }
     
     func isValidEmail(email: String) -> Bool {
+        // Comprehensive email address validation is somewhat complicated. Specific (and different) kinds of
+        // characters are allowed in the user part and the domain the domain part. In principle, the user part
+        // may include double quoted strings with considerable leeway and the domain part could be a local
+        // domain (without dot) or even an IP address. In practice, these cases are probably not especially relevant
+        // for real, good-faith users. However, unicode user names and domains may be important. The top-level
+        // domain at least could be validated directly against the list of valid TLDs per
+        // https://data.iana.org/TLD/tlds-alpha-by-domain.txt However this is subject to change.
+        
         let components = email.split(separator: "@")
         if components.count != 2 {
             // The email address doesn't have exactly one @ dividing it into a username and domain component
