@@ -25,7 +25,8 @@ struct RegistrationSuccessView: View {
                     Text(registrationHandler.registrationData.name).bold().padding()
                     Text(registrationHandler.registrationData.email).bold().padding()
                     Text(dateOfBirthText).bold().padding()
-                }.padding(.vertical)
+                }.background(RoundedRectangle(cornerRadius: 8)
+                    .stroke(lineWidth: 1.5)).padding(.vertical)
                 
             }.padding()
         }
