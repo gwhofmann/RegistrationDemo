@@ -50,29 +50,39 @@ struct RegistrationView: View {
                 Text("Registrierung").font(.title)
                 Text("Um dich zu registrieren, gib' bitte deinen Namen, deine Email-Adresse und dein Geburtsdatum ein.").padding(.vertical)
                 VStack{
-                    TextField("Name", text: $nameEntry)
+                    TextField("", text: $nameEntry, prompt: Text("Name").foregroundColor(Color("InputPlaceholderColour")))
                         .onSubmit {
-                            nameEntryAttempted = true
+                            withAnimation{
+                                nameEntryAttempted = true
+                            }
                         }
-                        .textFieldStyle(.roundedBorder)
+                        .textFieldStyle(.plain)
                         .textContentType(.name)
                         .keyboardType(.default)
                         .autocorrectionDisabled()
+                        .padding().background(RoundedRectangle(cornerRadius: 8)
+                            .stroke(lineWidth: 1.5)
+                            .foregroundColor(nameEntryAttempted && !nameEntryIsValid ? .red : .primary))
                         .padding(.horizontal)
                     if nameEntryAttempted && !nameEntryIsValid {
                         Text("Bitte gib' einen Namen ein.").foregroundColor(.red)
                     }
                 }.padding()
                 VStack{
-                    TextField("Email-Adresse", text: $emailEntry)
+                    TextField("", text: $emailEntry, prompt: Text("Email-Adresse").foregroundColor(Color("InputPlaceholderColour")))
                         .onSubmit {
-                            emailEntryAttempted = true
+                            withAnimation{
+                                emailEntryAttempted = true
+                            }
                         }
-                        .textFieldStyle(.roundedBorder)
+                        .textFieldStyle(.plain)
                         .textContentType(.emailAddress)
                         .keyboardType(.emailAddress)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
+                        .padding().background(RoundedRectangle(cornerRadius: 8)
+                            .stroke(lineWidth: 1.5)
+                            .foregroundColor(emailEntryAttempted && !emailEntryIsValid ? .red : .primary))
                         .padding(.horizontal)
 
                     if emailEntryAttempted && !emailEntryIsValid {
@@ -80,11 +90,10 @@ struct RegistrationView: View {
                     }
                 }.padding()
                 VStack{
-                    DatePicker("Geburtsdatum:", selection: $dobEntry, displayedComponents: .date)
-                        .onSubmit {
-                            dobEntryAttempted = true
-                        }
-                        .padding(.horizontal)
+                    DatePicker(selection: $dobEntry, displayedComponents: .date){
+                        Text("Geburtsdatum:")                            .foregroundColor(dobEntryAttempted && !dobEntryIsValid ? .red : .primary)
+                    }
+                    .padding(.horizontal)
                     
                     if dobEntryAttempted && !dobEntryIsValid {
                         Text("Bitte setze ein gültiges Geburtsdatum zwischen dem 1.1.1900 und dem 31.12.2022.").foregroundColor(.red)
