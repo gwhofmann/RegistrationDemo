@@ -11,7 +11,6 @@
 		F5F712642B2FB20500F3A028 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F712632B2FB20500F3A028 /* ContentView.swift */; };
 		F5F712662B2FB20500F3A028 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5F712652B2FB20500F3A028 /* Assets.xcassets */; };
 		F5F712692B2FB20500F3A028 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5F712682B2FB20500F3A028 /* Preview Assets.xcassets */; };
-		F5F712732B2FB20500F3A028 /* RegistrationDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F712722B2FB20500F3A028 /* RegistrationDemoTests.swift */; };
 		F5F7127D2B2FB20500F3A028 /* RegistrationDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F7127C2B2FB20500F3A028 /* RegistrationDemoUITests.swift */; };
 		F5F7127F2B2FB20500F3A028 /* RegistrationDemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F7127E2B2FB20500F3A028 /* RegistrationDemoUITestsLaunchTests.swift */; };
 		F5F7128E2B2FB20500F3A028 /* RegistrationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5F7128D2B2FB20500F3A028 /* RegistrationData.swift */; };
@@ -46,7 +45,6 @@
 		F5F712652B2FB20500F3A028 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F5F712682B2FB20500F3A028 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F5F7126E2B2FB20500F3A028 /* RegistrationDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegistrationDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F5F712722B2FB20500F3A028 /* RegistrationDemoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDemoTests.swift; sourceTree = "<group>"; };
 		F5F712782B2FB20500F3A028 /* RegistrationDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegistrationDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5F7127C2B2FB20500F3A028 /* RegistrationDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDemoUITests.swift; sourceTree = "<group>"; };
 		F5F7127E2B2FB20500F3A028 /* RegistrationDemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 		F5F712712B2FB20500F3A028 /* RegistrationDemoTests */ = {
 			isa = PBXGroup;
 			children = (
-				F5F712722B2FB20500F3A028 /* RegistrationDemoTests.swift */,
 				F5F712952B2FB20500F3A028 /* RegistrationHandlerTests.swift */,
 				F5F712972B30D37700F3A028 /* RegistrationHandlerIntegrationTests.swift */,
 			);
@@ -304,7 +301,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5F712732B2FB20500F3A028 /* RegistrationDemoTests.swift in Sources */,
 				F5F712962B2FB20500F3A028 /* RegistrationHandlerTests.swift in Sources */,
 				F5F712982B30D37700F3A028 /* RegistrationHandlerIntegrationTests.swift in Sources */,
 			);
